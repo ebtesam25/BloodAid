@@ -51,7 +51,18 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
                 break;
 
             case R.id.forgotPass:
-
+                final String email=emailEditText.getText().toString().trim();
+                mAuth.sendPasswordResetEmail(email)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(LoginActivity.this,"Password reset instructions sent. Please check your e-mail.",Toast.LENGTH_LONG).show();
+                                }else{
+                                    Toast.makeText(LoginActivity.this,"Enter a valid e-mail address.",Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
                 break;
 
             case R.id.signupButton:
@@ -75,25 +86,25 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
             emailEditText.requestFocus();
             return;
         }
-        else if(!email.endsWith("iut-dhaka.edu")){
+        if(!email.endsWith("iut-dhaka.edu")){
             emailEditText.setError("Invalid E-mail Address");
             emailEditText.requestFocus();
             return;
         }
 
-        else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             emailEditText.setError("Enter a valid Email Address");
             emailEditText.requestFocus();
             return;
 
 
         }
-        else if(password.isEmpty()){
+        if(password.isEmpty()){
             passwordEditText.setError("Enter your password");
             passwordEditText.requestFocus();
             return;
         }
-        else if(password.length()<6){
+        if(password.length()<6){
             passwordEditText.setError("Minimum length should be 6");
             passwordEditText.requestFocus();
             return;
