@@ -19,7 +19,7 @@ public class WaitApproval extends AppCompatActivity implements View.OnClickListe
             email=bundle.getString("email");
             password=bundle.getString("pass");
         }
-        imgButton=findViewById(R.id.imageButton2);
+        imgButton=findViewById(R.id.okay);
 
         imgButton.setOnClickListener(this);
 
@@ -28,7 +28,7 @@ public class WaitApproval extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.imgButton2){
+        if(v.getId()==R.id.okay){
             Intent intent = new Intent(getApplicationContext(),DonorReg.class);
             intent.putExtra("email",email);
             intent.putExtra("pass",password);

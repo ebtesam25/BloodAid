@@ -122,7 +122,7 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
                             finish();
                         }
                         else{
-                            Toast.makeText(LoginActivity.this,"Verify your E-mail address",Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this,"Please verify your account",Toast.LENGTH_LONG).show();
                         }
 
                     }

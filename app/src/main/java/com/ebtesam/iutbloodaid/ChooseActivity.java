@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 public class ChooseActivity extends AppCompatActivity implements View.OnClickListener {
-    String email,password;
+    String email,password,name;
     ImageButton findDonor,donorProfile,regDonor;
 
 
@@ -19,6 +19,7 @@ public class ChooseActivity extends AppCompatActivity implements View.OnClickLis
         Bundle bundle=getIntent().getExtras();
         if(bundle!=null){
             email=bundle.getString("email");
+            name=bundle.getString("name");
             password=bundle.getString("pass");
         }
         findDonor=findViewById(R.id.findDonor);
@@ -38,21 +39,21 @@ public class ChooseActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.findDonor
+            case R.id.findDonor:
                 Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
                 intent.putExtra("email",email);
-                intent.putExtra("pass",password);
+                intent.putExtra("name",name);
                 startActivity(intent);
 
                 break;
 
-            case R.id.donorProfile
+            case R.id.donorProfile:
 
 
                 break;
 
-            case R.id.regDonor
-                Intent intent2 = new Intent(getApplicationContext(),WaitApproval.class);
+            case R.id.regDonor:
+                Intent intent2 = new Intent(getApplicationContext(),DonorReg.class);
                 intent2.putExtra("email",email);
                 intent2.putExtra("pass",password);
                 startActivity(intent2);
