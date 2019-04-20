@@ -55,30 +55,36 @@
         android:id="@+id/notDonor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="264dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="310dp"
+        android:fontFamily="@font/quicksand_light"
         android:text="Not a donor yet?"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/regDonor"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/donorProfile" />
+        app:layout_constraintTop_toBottomOf="@+id/donorProfile"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
         android:id="@+id/regDonor"
-        android:layout_width="82dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="252dp"
-        android:layout_marginEnd="174dp"
-        android:layout_marginBottom="7dp"
+        android:layout_width="109dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="288dp"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/notDonor"
         app:layout_constraintTop_toBottomOf="@+id/donorProfile"
-        app:srcCompat="@drawable/loginlsset2mdpi" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/register" />
 
 </android.support.constraint.ConstraintLayout>
