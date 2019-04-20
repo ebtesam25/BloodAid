@@ -74,6 +74,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         Intent intent = new Intent(getApplicationContext(),ChooseActivity.class);
         intent.putExtra("email",email);
+        intent.putExtra("pass",password);
         startActivity(intent);
 
 
