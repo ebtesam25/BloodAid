@@ -49,7 +49,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/findDonor"
-        app:srcCompat="@drawable/donorProfile" />
+        app:srcCompat="@drawable/donorprofile" />
 
     <TextView
         android:id="@+id/notDonor"
