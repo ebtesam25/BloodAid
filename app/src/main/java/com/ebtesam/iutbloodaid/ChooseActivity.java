@@ -52,10 +52,10 @@ public class ChooseActivity extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case R.id.regDonor
-                Intent intent = new Intent(getApplicationContext(),WaitApproval.class);
-                intent.putExtra("email",email);
-                intent.putExtra("pass",password);
-                startActivity(intent);
+                Intent intent2 = new Intent(getApplicationContext(),WaitApproval.class);
+                intent2.putExtra("email",email);
+                intent2.putExtra("pass",password);
+                startActivity(intent2);
 
                 break;
 
