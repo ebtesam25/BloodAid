@@ -115,10 +115,16 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        Intent mainIntent = new Intent(LoginActivity.this, ChooseActivity.class);
-                        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(mainIntent);
-                        finish();
+                        if(mAuth.getCurrentUser().isEmailVerified()){
+                            Intent mainIntent = new Intent(LoginActivity.this, ChooseActivity.class);
+                            mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(mainIntent);
+                            finish();
+                        }
+                        else{
+                            Toast.makeText(LoginActivity.this,"Verify your E-mail address",Toast.LENGTH_LONG).show();
+                        }
+
                     }
                     else {
                         Toast.makeText(LoginActivity.this, "Invalid E-mail/Password combination", Toast.LENGTH_SHORT).show();
