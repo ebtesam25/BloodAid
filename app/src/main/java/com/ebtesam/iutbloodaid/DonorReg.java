@@ -18,27 +18,27 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class DonorReg extends AppCompatActivity implements View.OnClickListener {
     String bg[];
-    EditText sidText,nameText,contactText;
+    EditText sidText, nameText, contactText;
     ImageButton img;
     Spinner spinner;
-    String name,sid,phone,bldgrp;
+    String name, sid, phone, bldgrp;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private DatabaseReference donorReference;
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donor_reg);
         insertInDonorDatabase();
-        bg=getResources().getStringArray(R.array.blood_groups);
+        bg= getResources().getStringArray(R.array.blood_groups);
 
-        spinner=findViewById(R.id.bg);
-        sidText=findViewById(R.id.sid);
-        nameText=findViewById(R.id.name);
-        contactText=findViewById(R.id.phone);
-        img=findViewById(R.id.imageButton);
+        spinner = findViewById(R.id.bg);
+        sidText = findViewById(R.id.sid);
+        nameText = findViewById(R.id.name);
+        contactText = findViewById(R.id.phone);
+        img = findViewById(R.id.imageButton);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_custom,R.id.custom_spinner,bg);
-        spinner.setAdapter(adapter);
 
         spinner.setOnClickListener(this);
         sidText.setOnClickListener(this);
@@ -46,32 +46,34 @@ public class DonorReg extends AppCompatActivity implements View.OnClickListener 
         contactText.setOnClickListener(this);
         img.setOnClickListener(this);
 
+
+
+
     }
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.imageButton){
-            name=nameText.getText().toString();
-            sid=sidText.getText().toString();
-            phone=contactText.getText().toString();
-            bldgrp=spinner.getSelectedItem().toString();
+        if (v.getId() == R.id.imageButton) {
+            name = nameText.getText().toString();
+            sid = sidText.getText().toString();
+            phone = contactText.getText().toString();
+            bldgrp = spinner.getSelectedItem().toString();
 
-            if(name.isEmpty()){
+            if (name.isEmpty()) {
                 nameText.setError("Enter your name");
                 nameText.requestFocus();
                 return;
             }
-            if(sid.isEmpty()){
+            if (sid.isEmpty()) {
                 sidText.setError("Enter your IUT student ID");
                 sidText.requestFocus();
                 return;
             }
-            if(phone.isEmpty()){
+            if (phone.isEmpty()) {
                 contactText.setError("Enter your contact number");
                 contactText.requestFocus();
                 return;
-            }
-            else{
+            } else {
                 insertInDonorDatabase();
             }
 
@@ -79,23 +81,25 @@ public class DonorReg extends AppCompatActivity implements View.OnClickListener 
         }
 
     }
+
     public void storeInDatabase() {
+        mAuth = FirebaseAuth.getInstance();
         donorReference = FirebaseDatabase.getInstance().getReference().child("Donors");
         String userId = user.getUid();
-        String email=user.getEmail();
+        String email = user.getEmail();
         String name = nameText.getText().toString();
         String phone = contactText.getText().toString();
         String bloodgp = spinner.getSelectedItem().toString();
         String sid = sidText.getText().toString();
-        Integer flag=0;
+        Integer flag = 0;
 
 
-        Donor donor = new Donor(userId, email, name, sid, bloodgp,phone,flag);
+        Donor donor = new Donor(userId, email, name, sid, bloodgp, phone, flag);
         donorReference.child(bloodgp).push().setValue(donor).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(DonorReg.this, "Your application for Donor Registration has been received.", Toast.LENGTH_LONG).show();
-                Intent intent2 = new Intent(getApplicationContext(),WaitApproval.class);
+                Intent intent2 = new Intent(getApplicationContext(), WaitApproval.class);
                 startActivity(intent2);
 
             }
@@ -103,6 +107,7 @@ public class DonorReg extends AppCompatActivity implements View.OnClickListener 
     }
 
     public void insertInDonorDatabase() {
+        mAuth = FirebaseAuth.getInstance();
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,7 +116,7 @@ public class DonorReg extends AppCompatActivity implements View.OnClickListener 
                 String phone = contactText.getText().toString();
                 String bloodgp = spinner.getSelectedItem().toString();
                 String sid = sidText.getText().toString();
-                Integer flag=0;
+                Integer flag = 0;
                 if (!name.isEmpty() && !phone.isEmpty() && !bloodgp.isEmpty() && !sid.isEmpty()) {
                     storeInDatabase();
                 } else {
@@ -120,6 +125,8 @@ public class DonorReg extends AppCompatActivity implements View.OnClickListener 
             }
         });
     }
+
+
 
 
 }

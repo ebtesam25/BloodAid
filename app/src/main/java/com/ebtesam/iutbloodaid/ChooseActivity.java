@@ -5,9 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class ChooseActivity extends AppCompatActivity implements View.OnClickListener {
-    String email,password,name;
     ImageButton findDonor,donorProfile,regDonor;
 
 
@@ -15,13 +15,7 @@ public class ChooseActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose);
-        this.setTitle("Choose Your Action");
-        Bundle bundle=getIntent().getExtras();
-        if(bundle!=null){
-            email=bundle.getString("email");
-            name=bundle.getString("name");
-            password=bundle.getString("pass");
-        }
+
         findDonor=findViewById(R.id.findDonor);
         donorProfile=findViewById(R.id.donorProfile);
         regDonor=findViewById(R.id.regDonor);
@@ -40,22 +34,22 @@ public class ChooseActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.findDonor:
-                Intent intent = new Intent(getApplicationContext(),ChooseActivity.class);
+               /* Intent intent = new Intent(getApplicationContext(),ChooseActivity.class);
                 intent.putExtra("email",email);
                 intent.putExtra("name",name);
-                startActivity(intent);
+                startActivity(intent);*/
 
                 break;
 
             case R.id.donorProfile:
 
-
+            Intent profileIntent=new Intent(ChooseActivity.this,ProfileActivity.class);
+            startActivity(profileIntent);
                 break;
 
             case R.id.regDonor:
-                Intent intent2 = new Intent(getApplicationContext(),DonorReg.class);
-                intent2.putExtra("email",email);
-                intent2.putExtra("pass",password);
+                Toast.makeText(ChooseActivity.this,"And crash!",Toast.LENGTH_LONG).show();
+                Intent intent2 = new Intent(ChooseActivity.this,DonorReg.class);
                 startActivity(intent2);
 
                 break;
