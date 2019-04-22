@@ -16,7 +16,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class DonorReg extends AppCompatActivity implements View.OnClickListener {
+public class DonorReg extends AppCompatActivity {
     String bg[];
     EditText sidText, nameText, contactText;
     ImageButton img;
@@ -28,9 +28,9 @@ public class DonorReg extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donor_reg);
-        insertInDonorDatabase();
         bg= getResources().getStringArray(R.array.blood_groups);
 
         spinner = findViewById(R.id.bg);
@@ -40,47 +40,16 @@ public class DonorReg extends AppCompatActivity implements View.OnClickListener 
         img = findViewById(R.id.imageButton);
 
 
-        spinner.setOnClickListener(this);
+        /*spinner.setOnClickListener(this);
         sidText.setOnClickListener(this);
         nameText.setOnClickListener(this);
         contactText.setOnClickListener(this);
-        img.setOnClickListener(this);
+        img.setOnClickListener(this);*/
 
-
-
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.imageButton) {
-            name = nameText.getText().toString();
-            sid = sidText.getText().toString();
-            phone = contactText.getText().toString();
-            bldgrp = spinner.getSelectedItem().toString();
-
-            if (name.isEmpty()) {
-                nameText.setError("Enter your name");
-                nameText.requestFocus();
-                return;
-            }
-            if (sid.isEmpty()) {
-                sidText.setError("Enter your IUT student ID");
-                sidText.requestFocus();
-                return;
-            }
-            if (phone.isEmpty()) {
-                contactText.setError("Enter your contact number");
-                contactText.requestFocus();
-                return;
-            } else {
-                insertInDonorDatabase();
-            }
-
-
-        }
+        insertInDonorDatabase();
 
     }
+
 
     public void storeInDatabase() {
         mAuth = FirebaseAuth.getInstance();
@@ -99,7 +68,7 @@ public class DonorReg extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(DonorReg.this, "Your application for Donor Registration has been received.", Toast.LENGTH_LONG).show();
-                Intent intent2 = new Intent(getApplicationContext(), WaitApproval.class);
+                Intent intent2 = new Intent(DonorReg.this, WaitApproval.class);
                 startActivity(intent2);
 
             }
@@ -107,11 +76,37 @@ public class DonorReg extends AppCompatActivity implements View.OnClickListener 
     }
 
     public void insertInDonorDatabase() {
-        mAuth = FirebaseAuth.getInstance();
-        img.setOnClickListener(new View.OnClickListener() {
+        img.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                if (v.getId() == R.id.imageButton) {
+                    name = nameText.getText().toString();
+                    sid = sidText.getText().toString();
+                    phone = contactText.getText().toString();
+                    bldgrp = spinner.getSelectedItem().toString();
+
+                    if (name.isEmpty()) {
+                        nameText.setError("Enter your name");
+                        nameText.requestFocus();
+                        return;
+                    }
+                    if (sid.isEmpty()) {
+                        sidText.setError("Enter your IUT student ID");
+                        sidText.requestFocus();
+                        return;
+                    }
+                    if (phone.isEmpty()) {
+                        contactText.setError("Enter your contact number");
+                        contactText.requestFocus();
+                        return;
+                    }
+
+
+
+
+                }
                 String userId = user.getUid();
+                String email=user.getEmail();
                 String name = nameText.getText().toString();
                 String phone = contactText.getText().toString();
                 String bloodgp = spinner.getSelectedItem().toString();
@@ -122,8 +117,13 @@ public class DonorReg extends AppCompatActivity implements View.OnClickListener 
                 } else {
                     Toast.makeText(DonorReg.this, "All fields are mandatory. Make sure that you have entered all the required details.", Toast.LENGTH_LONG).show();
                 }
+
             }
+
+
+
         });
+
     }
 
 
