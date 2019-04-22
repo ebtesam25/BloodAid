@@ -40,7 +40,7 @@ public class ChooseActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.findDonor:
-                Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
+                Intent intent = new Intent(getApplicationContext(),ChooseActivity.class);
                 intent.putExtra("email",email);
                 intent.putExtra("name",name);
                 startActivity(intent);

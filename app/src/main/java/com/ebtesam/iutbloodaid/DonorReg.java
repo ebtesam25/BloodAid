@@ -8,24 +8,27 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class DonorReg extends AppCompatActivity implements View.OnClickListener {
-    String email,password;
     String bg[];
     EditText sidText,nameText,contactText;
     ImageButton img;
     Spinner spinner;
     String name,sid,phone,bldgrp;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private DatabaseReference donorReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donor_reg);
-        this.setTitle("Donor Registration");
-        Bundle bundle=getIntent().getExtras();
-        if(bundle!=null){
-            email=bundle.getString("email");
-            password=bundle.getString("pass");
-        }
+        insertInDonorDatabase();
         bg=getResources().getStringArray(R.array.blood_groups);
 
         spinner=findViewById(R.id.bg);
@@ -42,9 +45,6 @@ public class DonorReg extends AppCompatActivity implements View.OnClickListener 
         nameText.setOnClickListener(this);
         contactText.setOnClickListener(this);
         img.setOnClickListener(this);
-
-
-
 
     }
 
@@ -71,15 +71,55 @@ public class DonorReg extends AppCompatActivity implements View.OnClickListener 
                 contactText.requestFocus();
                 return;
             }
-
-
-
-            Intent intent2 = new Intent(getApplicationContext(),ChooseActivity.class);
-            intent2.putExtra("email",email);
-            intent2.putExtra("pass",password);
-            startActivity(intent2);
+            else{
+                insertInDonorDatabase();
+            }
 
 
         }
+
     }
+    public void storeInDatabase() {
+        donorReference = FirebaseDatabase.getInstance().getReference().child("Donors");
+        String userId = user.getUid();
+        String email=user.getEmail();
+        String name = nameText.getText().toString();
+        String phone = contactText.getText().toString();
+        String bloodgp = spinner.getSelectedItem().toString();
+        String sid = sidText.getText().toString();
+        Integer flag=0;
+
+
+        Donor donor = new Donor(userId, email, name, sid, bloodgp,phone,flag);
+        donorReference.child(bloodgp).push().setValue(donor).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(DonorReg.this, "Your application for Donor Registration has been received.", Toast.LENGTH_LONG).show();
+                Intent intent2 = new Intent(getApplicationContext(),WaitApproval.class);
+                startActivity(intent2);
+
+            }
+        });
+    }
+
+    public void insertInDonorDatabase() {
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String userId = user.getUid();
+                String name = nameText.getText().toString();
+                String phone = contactText.getText().toString();
+                String bloodgp = spinner.getSelectedItem().toString();
+                String sid = sidText.getText().toString();
+                Integer flag=0;
+                if (!name.isEmpty() && !phone.isEmpty() && !bloodgp.isEmpty() && !sid.isEmpty()) {
+                    storeInDatabase();
+                } else {
+                    Toast.makeText(DonorReg.this, "All fields are mandatory. Make sure that you have entered all the required details.", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+
 }

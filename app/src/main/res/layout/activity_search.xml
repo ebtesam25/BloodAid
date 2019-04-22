@@ -24,14 +24,14 @@
 
     <TextView
         android:id="@+id/searchbybg"
-        android:layout_width="150dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="85dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="89dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/quicksand_light"
-        android:text="Search by Blood Group"
+        android:text="Blood Group"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         app:layout_constraintBottom_toTopOf="@+id/recycler_view"
         app:layout_constraintEnd_toStartOf="@+id/bg"
@@ -40,14 +40,17 @@
 
     <Spinner
         android:id="@+id/bg"
-        android:layout_width="100dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="11dp"
+        android:layout_width="84dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="19dp"
         android:layout_marginTop="22dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="20dp"
+        android:entries="@array/blood_groups"
+        android:textAlignment="viewEnd"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/recycler_view"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/searchbtn"
         app:layout_constraintStart_toEndOf="@+id/searchbybg"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:layout_constraintVertical_bias="1.0" />
@@ -69,5 +72,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/searchbtn"
+        android:layout_width="91dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorAccent"
+        android:fontFamily="@font/quicksand_light"
+        android:text="Search"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bg"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>
