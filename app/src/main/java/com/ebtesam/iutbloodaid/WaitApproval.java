@@ -13,12 +13,7 @@ public class WaitApproval extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wait_approval);
-        this.setTitle("Terms and Conditions");
-        Bundle bundle=getIntent().getExtras();
-        if(bundle!=null){
-            email=bundle.getString("email");
-            password=bundle.getString("pass");
-        }
+
         imgButton=findViewById(R.id.okay);
 
         imgButton.setOnClickListener(this);
@@ -29,9 +24,8 @@ public class WaitApproval extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v.getId()==R.id.okay){
-            Intent intent = new Intent(getApplicationContext(),DonorReg.class);
-            intent.putExtra("email",email);
-            intent.putExtra("pass",password);
+
+            Intent intent = new Intent(getApplicationContext(),ChooseActivity.class);
             startActivity(intent);
 
         }

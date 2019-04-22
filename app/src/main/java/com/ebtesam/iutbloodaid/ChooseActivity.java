@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 public class ChooseActivity extends AppCompatActivity implements View.OnClickListener {
     ImageButton findDonor,donorProfile,regDonor;
+    public static String dacc;
 
 
     @Override
@@ -49,8 +50,15 @@ public class ChooseActivity extends AppCompatActivity implements View.OnClickLis
 
             case R.id.regDonor:
                 Toast.makeText(ChooseActivity.this,"And crash!",Toast.LENGTH_LONG).show();
-                Intent intent2 = new Intent(ChooseActivity.this,DonorReg.class);
-                startActivity(intent2);
+
+                        Toast.makeText(ChooseActivity.this,"You have already registered",Toast.LENGTH_LONG).show();
+
+                        Intent intent2 = new Intent(ChooseActivity.this, DonorReg.class);
+                        startActivity(intent2);
+
+
+
+
 
                 break;
 

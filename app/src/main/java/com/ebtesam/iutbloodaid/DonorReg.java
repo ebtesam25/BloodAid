@@ -26,6 +26,7 @@ public class DonorReg extends AppCompatActivity {
     private DatabaseReference donorReference;
     private FirebaseAuth mAuth;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mAuth = FirebaseAuth.getInstance();
@@ -60,13 +61,14 @@ public class DonorReg extends AppCompatActivity {
         String phone = contactText.getText().toString();
         String bloodgp = spinner.getSelectedItem().toString();
         String sid = sidText.getText().toString();
-        Integer flag = 0;
+        String status = "unapproved";
 
 
-        Donor donor = new Donor(userId, email, name, sid, bloodgp, phone, flag);
+        Donor donor = new Donor(userId, email, name, sid, bloodgp, phone, status);
         donorReference.child(bloodgp).push().setValue(donor).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
+
                 Toast.makeText(DonorReg.this, "Your application for Donor Registration has been received.", Toast.LENGTH_LONG).show();
                 Intent intent2 = new Intent(DonorReg.this, WaitApproval.class);
                 startActivity(intent2);
@@ -111,7 +113,6 @@ public class DonorReg extends AppCompatActivity {
                 String phone = contactText.getText().toString();
                 String bloodgp = spinner.getSelectedItem().toString();
                 String sid = sidText.getText().toString();
-                Integer flag = 0;
                 if (!name.isEmpty() && !phone.isEmpty() && !bloodgp.isEmpty() && !sid.isEmpty()) {
                     storeInDatabase();
                 } else {

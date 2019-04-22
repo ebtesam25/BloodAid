@@ -10,7 +10,7 @@ public class Donor {
     String sid;
     String bg;
     String phone;
-    Integer flag;
+    String status;
 
     Donor()
     {
@@ -18,7 +18,7 @@ public class Donor {
     }
 
 
-    public Donor(String userId, String email, String name, String sid, String bg, String phone, int flag) {
+    public Donor(String userId, String email, String name, String sid, String bg, String phone, String status) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();
         email=user.getEmail();
@@ -28,7 +28,7 @@ public class Donor {
         this.phone = phone;
         this.bg = bg;
         this.sid = sid;
-        this.flag=flag;
+        this.status=status;
     }
 
     public String getEmail() {
@@ -83,8 +83,14 @@ public class Donor {
     public void setSid(String sid) {
         this.sid = sid;
     }
-    public void setFlag(Integer flag) {
-        this.flag=flag;
+
+    public String getStatus() {
+
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status=status;
     }
 
 
