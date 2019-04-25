@@ -8,6 +8,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.time.LocalDateTime;
 import java.util.Calendar;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
@@ -46,18 +47,23 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         int year=Integer.parseInt(yearr);
 
         long time= System.currentTimeMillis();
+        LocalDateTime now = LocalDateTime.now();
+        int cyear = now.getYear();
+        int cmonth = now.getMonthValue();
+        int cday = now.getDayOfMonth();
+        long ctime=cyear*365+cmonth*30+cday;
 
         long ldod=year*365+month*30+day;
-        long ldodms=86400000*ldod;
-        long elig=time-ldodms;
-        long wp=56*86400000;
+        long elig=ctime-ldod;
+        long wp=56;
+        String eligg=Long.toString(elig);
         if(elig<wp){
             eligibile.setText("You are not eligible to donate");
         }
         else{
             eligibile.setText("You are eligible to donate");
         }
-        lastdate.setText("Last Donated On"+d+"/"+m+"/"+yy);
+        lastdate.setText("Last Donated On "+dayy+"/"+monthh+"/"+yearr);
 
     }
 }

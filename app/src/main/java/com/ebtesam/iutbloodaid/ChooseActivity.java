@@ -49,7 +49,7 @@ public class ChooseActivity extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case R.id.regDonor:
-                Toast.makeText(ChooseActivity.this,"And crash!",Toast.LENGTH_LONG).show();
+              //  Toast.makeText(ChooseActivity.this,"And crash!",Toast.LENGTH_LONG).show();
 
                         Toast.makeText(ChooseActivity.this,"You have already registered",Toast.LENGTH_LONG).show();
 
