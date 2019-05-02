@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "358159762490",
+    "firebase_url": "https://iut-blood-aid.firebaseio.com",
+    "project_id": "iut-blood-aid",
+    "storage_bucket": "iut-blood-aid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:358159762490:android:a3e909261da710e1",
+        "android_client_info": {
+          "package_name": "com.ebtesam.iutbloodaid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "358159762490-lvo4hbrijjse1tq8j0nf6pd2flg830ec.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBUE2az-7yRsV1qWx5bCUs-9AIC3_0ohY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "358159762490-lvo4hbrijjse1tq8j0nf6pd2flg830ec.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -26,7 +26,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private Button date;
     private EditText d, m, yy;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    private DatabaseReference donorReference;
+    private DatabaseReference donorReference, donorReference2, donorReference3, donorReference4, donorReference5, donorReference6, donorReference7, donorReference8;
     private FirebaseAuth mAuth;
 
     @Override
@@ -100,6 +100,181 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     DatabaseReference updateData = FirebaseDatabase.getInstance().getReference("Donors/A+/").child(key);
                     if(ed==0)
                     updateData.child("eligibility").setValue("not eligible");
+                    else if(ed==1)
+                        updateData.child("eligibility").setValue("eligible");
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        donorReference2 = FirebaseDatabase.getInstance().getReference().child("Donors/A-");
+        donorReference2.orderByChild("userId").equalTo(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    Log.d("User key", child.getKey());
+                    String key=child.getKey();
+
+                    Log.d("User ID",key);
+                    DatabaseReference updateData = FirebaseDatabase.getInstance().getReference("Donors/A-/").child(key);
+                    if(ed==0)
+                        updateData.child("eligibility").setValue("not eligible");
+                    else if(ed==1)
+                        updateData.child("eligibility").setValue("eligible");
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        donorReference3 = FirebaseDatabase.getInstance().getReference().child("Donors/B+");
+        donorReference3.orderByChild("userId").equalTo(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    Log.d("User key", child.getKey());
+                    String key=child.getKey();
+
+                    Log.d("User ID",key);
+                    DatabaseReference updateData = FirebaseDatabase.getInstance().getReference("Donors/B+/").child(key);
+                    if(ed==0)
+                        updateData.child("eligibility").setValue("not eligible");
+                    else if(ed==1)
+                        updateData.child("eligibility").setValue("eligible");
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        donorReference4 = FirebaseDatabase.getInstance().getReference().child("Donors/B-");
+        donorReference4.orderByChild("userId").equalTo(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    Log.d("User key", child.getKey());
+                    String key=child.getKey();
+
+                    Log.d("User ID",key);
+                    DatabaseReference updateData = FirebaseDatabase.getInstance().getReference("Donors/B-/").child(key);
+                    if(ed==0)
+                        updateData.child("eligibility").setValue("not eligible");
+                    else if(ed==1)
+                        updateData.child("eligibility").setValue("eligible");
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        donorReference5 = FirebaseDatabase.getInstance().getReference().child("Donors/AB+");
+        donorReference5.orderByChild("userId").equalTo(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    Log.d("User key", child.getKey());
+                    String key=child.getKey();
+
+                    Log.d("User ID",key);
+                    DatabaseReference updateData = FirebaseDatabase.getInstance().getReference("Donors/AB+/").child(key);
+                    if(ed==0)
+                        updateData.child("eligibility").setValue("not eligible");
+                    else if(ed==1)
+                        updateData.child("eligibility").setValue("eligible");
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        donorReference6 = FirebaseDatabase.getInstance().getReference().child("Donors/AB-");
+        donorReference6.orderByChild("userId").equalTo(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    Log.d("User key", child.getKey());
+                    String key=child.getKey();
+
+                    Log.d("User ID",key);
+                    DatabaseReference updateData = FirebaseDatabase.getInstance().getReference("Donors/AB-/").child(key);
+                    if(ed==0)
+                        updateData.child("eligibility").setValue("not eligible");
+                    else if(ed==1)
+                        updateData.child("eligibility").setValue("eligible");
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        donorReference7 = FirebaseDatabase.getInstance().getReference().child("Donors/O+");
+        donorReference7.orderByChild("userId").equalTo(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    Log.d("User key", child.getKey());
+                    String key=child.getKey();
+
+                    Log.d("User ID",key);
+                    DatabaseReference updateData = FirebaseDatabase.getInstance().getReference("Donors/O+/").child(key);
+                    if(ed==0)
+                        updateData.child("eligibility").setValue("not eligible");
+                    else if(ed==1)
+                        updateData.child("eligibility").setValue("eligible");
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        donorReference8 = FirebaseDatabase.getInstance().getReference().child("Donors/O-");
+        donorReference8.orderByChild("userId").equalTo(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    Log.d("User key", child.getKey());
+                    String key=child.getKey();
+
+                    Log.d("User ID",key);
+                    DatabaseReference updateData = FirebaseDatabase.getInstance().getReference("Donors/O-/").child(key);
+                    if(ed==0)
+                        updateData.child("eligibility").setValue("not eligible");
                     else if(ed==1)
                         updateData.child("eligibility").setValue("eligible");
 
