@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/bldntn"
-        android:layout_width="388dp"
-        android:layout_height="164dp"
+        android:layout_width="337dp"
+        android:layout_height="119dp"
         android:layout_marginStart="6dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="6dp"
@@ -18,23 +18,21 @@
         android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.291"
+        app:layout_constraintVertical_bias="0.166"
         app:srcCompat="@drawable/asset4mdpi" />
 
-    <ImageView
-        android:id="@+id/iutlogo"
-        android:layout_width="413dp"
-        android:layout_height="443dp"
-        android:layout_marginTop="9dp"
-        android:contentDescription="@string/todo"
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="97dp"
+        android:layout_height="93dp"
+        android:alpha="0.25"
+        android:background="@drawable/loading"
+        android:src="@drawable/loading"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bldntn"
-        app:layout_constraintVertical_bias="0.324"
-        app:srcCompat="@drawable/asset3mdpi" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
 
 </android.support.constraint.ConstraintLayout>

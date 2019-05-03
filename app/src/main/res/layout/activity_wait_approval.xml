@@ -28,11 +28,12 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="341dp"
+        android:layout_width="332dp"
         android:layout_height="66dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="240dp"
+        android:layout_marginBottom="236dp"
         android:background="@color/colorAccent"
         android:fontFamily="@font/quicksand_light"
         android:padding="5dp"
@@ -40,7 +41,10 @@
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
         android:id="@+id/okay"
@@ -49,15 +53,15 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="176dp"
+        android:layout_marginBottom="108dp"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.441"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.371"
         app:srcCompat="@drawable/okay" />
 
     <ScrollView
@@ -80,8 +84,8 @@
 
             <TextView
                 android:id="@+id/ec_full"
-                android:layout_width="341dp"
-                android:layout_height="412dp"
+                android:layout_width="338dp"
+                android:layout_height="433dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
