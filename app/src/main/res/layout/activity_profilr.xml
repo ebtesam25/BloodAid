@@ -43,12 +43,12 @@
 
     <TextView
         android:id="@+id/lastd"
-        android:layout_width="335dp"
+        android:layout_width="405dp"
         android:layout_height="43dp"
         android:layout_marginStart="49dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="27dp"
-        android:background="@color/colorAccent"
+        android:background="@color/colorAccent2"
         android:fontFamily="@font/quicksand_light"
         android:padding="10dp"
         android:textAlignment="center"
@@ -56,7 +56,7 @@
         android:textColorHint="@color/common_google_signin_btn_text_dark_pressed"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.642"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
@@ -122,13 +122,13 @@
 
     <TextView
         android:id="@+id/eligiblity"
-        android:layout_width="337dp"
+        android:layout_width="407dp"
         android:layout_height="44dp"
         android:layout_marginStart="49dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="25dp"
-        android:layout_marginBottom="200dp"
-        android:background="@color/colorAccent"
+        android:layout_marginBottom="216dp"
+        android:background="@color/colorAccent2"
         android:fontFamily="@font/quicksand_light"
         android:padding="10dp"
         android:textAlignment="center"
@@ -137,6 +137,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.671"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lastd" />
 
