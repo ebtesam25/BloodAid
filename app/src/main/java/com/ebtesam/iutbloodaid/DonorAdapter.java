@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +22,7 @@ public class DonorAdapter extends RecyclerView.Adapter<DonorAdapter.DonorHolder>
 
         public DonorHolder(View itemView) {
             super(itemView);
-            bgp = (TextView) itemView.findViewById(R.id.receive_single_bloodgp);
-            name = (TextView) itemView.findViewById(R.id.receive_single_name);
+            name = itemView.findViewById(R.id.receive_single_name);
         }
     }
     public DonorAdapter(Context context, ArrayList<Donor> donors) {
@@ -43,21 +43,20 @@ public class DonorAdapter extends RecyclerView.Adapter<DonorAdapter.DonorHolder>
     @Override
     public void onBindViewHolder(final DonorHolder myViewHolder, final int listPosition) {
 
-        TextView bloodgpView = myViewHolder.bgp;
         TextView nameView = myViewHolder.name;
 
 
 
         String nameofdonor = donors.get(listPosition).getName();
-        String blood = donors.get(listPosition).getBg();
 
 
-        bloodgpView.setText(blood);
         nameView.setText(nameofdonor);
 
     }
     @Override
     public int getItemCount() {
+        String ds=String.valueOf(donors.size());
+        Log.e("Donors:",ds);
         return donors.size();
     }
 }

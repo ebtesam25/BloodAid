@@ -29,9 +29,13 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         listOfDonors = new ArrayList<Donor>();
-        editText = findViewById(R.id.editText);
-        editText.setText("");
+       // editText = findViewById(R.id.editText);
+        //editText.setText("");
         recyclerView = findViewById(R.id.result_recycler_view);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(customAdapter);
+        recyclerView.setVisibility(View.VISIBLE);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemViewCacheSize(20);
@@ -48,9 +52,15 @@ public class ResultActivity extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             Donor donor = snapshot.getValue(Donor.class);
-                            editText.setText(donor.getName() + " " + editText.getText());
-                            listOfDonors.add(donor);
+
+                            String st=donor.getStatus();
+                            if(st.equals("approved")) {
+                                listOfDonors.add(donor);
+
+                               // editText.setText(donor.getName() + " " + editText.getText());
+                            }
                         }
+                        recyclerView.setAdapter(new DonorAdapter(getApplicationContext(), listOfDonors));
                     }
 
                     @Override
@@ -58,6 +68,6 @@ public class ResultActivity extends AppCompatActivity {
                     }
                 });
 
-        recyclerView.setAdapter(new DonorAdapter(getApplicationContext(), listOfDonors));
+
     }
 }
