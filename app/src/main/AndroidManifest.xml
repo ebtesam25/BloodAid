@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DonorAdapter"></activity>
+        <activity android:name=".ResultActivity"></activity>
+        <activity android:name=".DonorAdapter" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".WaitApproval" />
         <activity android:name=".DonorReg" />

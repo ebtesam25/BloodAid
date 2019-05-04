@@ -1,5 +1,6 @@
 package com.ebtesam.iutbloodaid;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -19,57 +21,61 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Locale;
 
-/*public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
+public class SearchActivity extends AppCompatActivity {
     String email,password;
     String bg[];
-    String bldgrp={"A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"};;
-    Spinner bgroup;
-    Button searchb;
+    String bldgrp[]={"A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"};;
+    private Spinner bgroup;
+    Button searchbtn;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        Bundle bundle=getIntent().getExtras();
-        if(bundle!=null){
-            email=bundle.getString("email");
-            password=bundle.getString("pass");
-        }
+
         bg=getResources().getStringArray(R.array.blood_groups);
 
         bgroup=findViewById(R.id.bg);
-        searchb=findViewById(R.id.searchbtn);
+        searchbtn=findViewById(R.id.searchbtn);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_custom,R.id.custom_spinner,bg);
-        bgroup.setAdapter(adapter);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, bldgrp);
+        bgroup.setAdapter(arrayAdapter);
 
-        bgroup.setOnItemSelectedListener(this);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        bgroup.setAdapter(arrayAdapter);
 
 
+        searchbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (bgroup!=null) {
+                    Intent resultIntent = new Intent(SearchActivity.this, ResultActivity.class);
+                    resultIntent.putExtra("bloodgp", bgroup.getSelectedItem().toString());
+                    startActivity(resultIntent);
+                } else {
+                    Toast.makeText(SearchActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        if(v.getId()==R.id.bg){
-            bldgrp=spinner.getSelectedItem().toString();
-            search(bldgrp);
-        }
     }
     /*private void search(){
         Query q=mDatabase.orderByChild("name");
         q.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.hasChildren())
+                if(dataSnapshot.hasChildren()){
+                    Intent resultIntent = new Intent(SearchActivity.this, ResultActivity.class);
+                    resultIntent.putExtra("bloodgp", bgroup.getSelectedItem().toString());
+                    startActivity(resultIntent);
+                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        })
-    }
-}*/
+        });
+    }*/
+}
