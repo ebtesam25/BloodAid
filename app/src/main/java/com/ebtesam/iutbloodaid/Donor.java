@@ -11,6 +11,7 @@ public class Donor {
     String bg;
     String phone;
     String status;
+    String eligibility;
 
     Donor()
     {
@@ -18,7 +19,7 @@ public class Donor {
     }
 
 
-    public Donor(String userId, String email, String name, String sid, String bg, String phone, String status) {
+    public Donor(String userId, String email, String name, String sid, String bg, String phone, String status, String eligibiliy) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();
         email=user.getEmail();
@@ -29,6 +30,7 @@ public class Donor {
         this.bg = bg;
         this.sid = sid;
         this.status=status;
+        this.eligibility=eligibility;
     }
 
     public String getEmail() {
@@ -54,6 +56,12 @@ public class Donor {
     public String getName() {
 
         return name;
+    }
+    public String getEligibility(){
+        return eligibility;
+    }
+    public void setElig(String eligibility){
+        this.eligibility=eligibility;
     }
 
     public void setName(String name) {

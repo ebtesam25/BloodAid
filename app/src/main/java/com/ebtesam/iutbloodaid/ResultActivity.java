@@ -54,7 +54,8 @@ public class ResultActivity extends AppCompatActivity {
                             Donor donor = snapshot.getValue(Donor.class);
 
                             String st=donor.getStatus();
-                            if(st.equals("approved")) {
+                            String el=donor.getEligibility();
+                            if(st.equals("approved") && el.equals("eligible") ) {
                                 listOfDonors.add(donor);
 
                                // editText.setText(donor.getName() + " " + editText.getText());

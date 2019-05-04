@@ -53,6 +53,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private void userSignUp() {
         final String name=nameText.getText().toString().trim();
         final String email=emailEditText.getText().toString().trim();
+        final String donor="no";
         String password=passwordEditText.getText().toString().trim();
         String repass=repasswordEditText.getText().toString().trim();
 
@@ -116,7 +117,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     });
 
 
-                        insertInDatabase(name,email);
+                        insertInDatabase(name,email,donor);
 
                         Intent chooseIntent = new Intent(SignUpActivity.this, ChooseActivity.class);
 
@@ -135,13 +136,14 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
 
 
-    public void insertInDatabase(String name,String email) {
+    public void insertInDatabase(String name,String email, String donor) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String userId = user.getUid();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
         HashMap<String, String> hashMap = new HashMap<String, String>();
         hashMap.put("name",name);
         hashMap.put("email",email);
+        hashMap.put("donor",donor);
         mDatabase.setValue(hashMap);
     }
 }

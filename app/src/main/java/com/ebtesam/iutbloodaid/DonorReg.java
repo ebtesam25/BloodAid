@@ -1,6 +1,7 @@
 package com.ebtesam.iutbloodaid;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,7 @@ public class DonorReg extends AppCompatActivity {
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private DatabaseReference donorReference;
     private FirebaseAuth mAuth;
+
 
 
     @Override
@@ -62,14 +64,16 @@ public class DonorReg extends AppCompatActivity {
         String bloodgp = spinner.getSelectedItem().toString();
         String sid = sidText.getText().toString();
         String status = "unapproved";
+        String elig="ineligible";
 
 
-        Donor donor = new Donor(userId, email, name, sid, bloodgp, phone, status);
+        Donor donor = new Donor(userId, email, name, sid, bloodgp, phone, status,elig);
         donorReference.child(bloodgp).push().setValue(donor).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
 
                 Toast.makeText(DonorReg.this, "Your application for Donor Registration has been received.", Toast.LENGTH_LONG).show();
+
                 Intent intent2 = new Intent(DonorReg.this, WaitApproval.class);
                 startActivity(intent2);
 
