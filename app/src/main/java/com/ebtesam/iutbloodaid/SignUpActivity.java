@@ -119,7 +119,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
                         insertInDatabase(name,email,donor);
 
-                        Intent chooseIntent = new Intent(SignUpActivity.this, ChooseActivity.class);
+                        Intent chooseIntent = new Intent(SignUpActivity.this, LoginActivity.class);
 
                         startActivity(chooseIntent);
                         finish();
